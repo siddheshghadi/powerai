@@ -1,9 +1,9 @@
 {% set name = "ray" %}
-{% set version = "0.7.5" %}
+{% set version = "0.7.6" %}
 
 package:
   name: {{ name|lower }}
-  version: {{ version }}
+  version: {{ version }}_1.6.2
 
 source:
   git_url: https://github.com/ray-project/ray.git
@@ -12,7 +12,6 @@ source:
     - redis-bazel-build.patch
     
 build:
-  noarch: python
   number: 0
   rpaths_patcher: patchelf
 
@@ -46,7 +45,7 @@ requirements:
   run:
     - numpy
     - colorama
-    - protobuf
+    - protobuf >=3.8.0,<3.9.0a
     - redis
     - redis-py
     - funcsigs
